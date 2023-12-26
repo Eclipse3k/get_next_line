@@ -1,0 +1,16 @@
+CC=gcc
+CFLAGS=-I.
+
+DEPS = get_next_line.h
+OBJ = get_next_line.o get_next_line_utils.o 
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+get_next_line: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+.PHONY: clean
+
+clean:
+	rm -f $(OBJ) get_next_line
